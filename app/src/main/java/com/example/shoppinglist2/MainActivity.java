@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements CategoryListAdapt
     private Category categoryForEdit;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,16 @@ public class MainActivity extends AppCompatActivity implements CategoryListAdapt
         recyclerView = findViewById(R.id.recyclerView);
 
        ImageView addNew = findViewById(R.id.addNewCategoryImageView);
+       ImageView shareNew = findViewById(R.id.addSend);
+
+       shareNew.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(MainActivity.this, MailSend.class);
+               startActivity(intent);
+           }
+       });
+
        addNew.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -135,4 +146,5 @@ public class MainActivity extends AppCompatActivity implements CategoryListAdapt
         this.categoryForEdit = category;
         showAddCategoryDialog(true);
     }
+
 }
